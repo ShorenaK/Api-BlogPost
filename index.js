@@ -5,7 +5,7 @@ const titleInput = document.getElementById("post-body")
 // https - is the part of the protocol 
 fetch("https://apis.scrimba.com/jsonplaceholder/posts")
 .then(request => request.json())
-.then((data)=> console.log(data))
+.then((data)=> data)
 
 
 fetch("https://apis.scrimba.com/jsonplaceholder/posts", {method: 'GET'})
@@ -22,7 +22,16 @@ fetch("https://apis.scrimba.com/jsonplaceholder/posts", {method: 'GET'})
  document.getElementById('blog-list').innerHTML = html
 })
 
-
+form.addEventListener("submit", function(e){
+    e.preventDefault()
+   const postTitle = titleInput.value
+   const postBody = bodyInput.value
+   const data = {
+    title: postTitle, 
+    body: postBody
+}
+console.log(data)
+})
 
 
 
