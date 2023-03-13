@@ -8,7 +8,12 @@ fetch("https://apis.scrimba.com/jsonplaceholder/posts")
 
 fetch("https://apis.scrimba.com/jsonplaceholder/todos", {method: 'GET'})
 .then((request)=> request.json())
-.then((data)=> console.log(data))
+.then((data)=> console.log(data.slice(0, 5)))
+
+
+
+
+
 
 
 
