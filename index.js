@@ -1,4 +1,6 @@
-
+const form = document.getElementById("new-post")
+const bodyInput = document.getElementById("post-title")
+const titleInput = document.getElementById("post-body")
 
 // https - is the part of the protocol 
 fetch("https://apis.scrimba.com/jsonplaceholder/posts")
