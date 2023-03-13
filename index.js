@@ -6,9 +6,19 @@ fetch("https://apis.scrimba.com/jsonplaceholder/posts")
 .then((data)=> console.log(data))
 
 
-fetch("https://apis.scrimba.com/jsonplaceholder/todos", {method: 'GET'})
+fetch("https://apis.scrimba.com/jsonplaceholder/posts", {method: 'GET'})
 .then((request)=> request.json())
-.then((data)=> console.log(data.slice(0, 5)))
+.then((data)=> {
+    const postArr = data.slice(0,5)
+    let html = ""
+    for (let post of postArr){
+        html += `<h1>${post.title}</h1>
+        <p>${post.body}</p>
+        <hr />`
+
+    }
+ document.getElementById('blog-list').innerHTML = html
+})
 
 
 
