@@ -4,16 +4,7 @@ const titleInput = document.getElementById("post-body")
 const postDiv = document.getElementById('blog-list')
 const newPostArrays = []
 // https - is the part of the protocol 
-function render(){
-    let html = ""
-    for (let newPost of newPostArrays){
-       html += `<h1> ${newPost.title}</h1>
-                <p>${newPost.body}</p>
-                <hr />
-       `
-    }
-    postDiv.innerHTML = html
-}
+
 
 fetch("https://apis.scrimba.com/jsonplaceholder/posts")
 .then(request => request.json())
@@ -28,12 +19,25 @@ fetch("https://apis.scrimba.com/jsonplaceholder/posts", {method: 'GET'})
     for (let post of postArr){
         html += `<h1>${post.title}</h1>
         <p>${post.body}</p>
-        <hr />`
+        <hr />
+       
+        `
 
     }
- postDiv.innerHTML = html
+   postDiv.innerHTML = html
+ 
 })
 
+function render(){
+    let html = ""
+    for (let newPost of newPostArrays){
+       html += `<h1> ${newPost.title}</h1>
+                <p>${newPost.body}</p>
+                <hr />
+       `
+    }
+    postDiv.innerHTML += html
+}
 form.addEventListener("submit", function(e){
     e.preventDefault()
    const postTitle = titleInput.value
@@ -54,6 +58,8 @@ fetch("https://apis.scrimba.com/jsonplaceholder/posts", options )
 .then(post =>{
    newPostArrays.unshift(post)
     render()
+    titleInput.value = ""
+    bodyInput.value = ""
 })
 })
 
