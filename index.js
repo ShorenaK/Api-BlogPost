@@ -1,8 +1,20 @@
 const form = document.getElementById("new-post")
 const bodyInput = document.getElementById("post-title")
 const titleInput = document.getElementById("post-body")
-
+const postDiv = document.getElementById('blog-list')
+const newPostArrays = []
 // https - is the part of the protocol 
+function render(){
+    let html = ""
+    for (let newPost of newPostArrays){
+       html += `<h1> ${newPost.title}</h1>
+                <p>${newPost.body}</p>
+                <hr />
+       `
+    }
+    postDiv.innerHTML = html
+}
+
 fetch("https://apis.scrimba.com/jsonplaceholder/posts")
 .then(request => request.json())
 .then((data)=> data)
@@ -19,7 +31,7 @@ fetch("https://apis.scrimba.com/jsonplaceholder/posts", {method: 'GET'})
         <hr />`
 
     }
- document.getElementById('blog-list').innerHTML = html
+ postDiv.innerHTML = html
 })
 
 form.addEventListener("submit", function(e){
@@ -38,9 +50,10 @@ form.addEventListener("submit", function(e){
   }
 }
 fetch("https://apis.scrimba.com/jsonplaceholder/posts", options )
-.then(res => res.json())
-.then(data =>{
-    console.log(data)
+.then(res => res.json()) // parsing the data from json to js
+.then(post =>{
+   newPostArrays.unshift(post)
+    render()
 })
 })
 
