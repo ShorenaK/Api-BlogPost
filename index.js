@@ -50,6 +50,7 @@ fetch("https://apis.scrimba.com/jsonplaceholder/posts", options )
     renderPost()
     titleInput.value = ""
     bodyInput.value = ""
+    // form.reset() to clean all of the inputs of form 
 })
 })
 
